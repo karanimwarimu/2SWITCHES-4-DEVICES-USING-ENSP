@@ -1,0 +1,131 @@
+<Huawei> u t m 
+Info: Current terminal monitor is off.
+<Huawei> sys	
+<Huawei>system-view 
+Enter system view, return user view with Ctrl+Z.
+[Huawei] sys	
+[Huawei]sysname S1
+
+[S1]interface	
+[S1]interface g	
+[S1]interface GigabitEthernet 0/0/1
+
+[S1-GigabitEthernet0/0/1] port link-type trunk 
+[S1-GigabitEthernet0/0/1] port trunk allow-pass vlan all
+[S1-GigabitEthernet0/0/1] q
+
+[S1]interface e	
+[S1]interface Eth0/0/1
+[S1-Ethernet0/0/1] port link-type access
+
+[S1-Ethernet0/0/1]vlan 1
+[S1-vlan1]port e	
+[S1-vlan1]port Ethernet 0/0/1
+[S1-vlan1] q
+
+[S1] interface e		
+[S1] interface Ethernet 0/0/2
+[S1-Ethernet0/0/2]  port link-type access
+
+[S1-Ethernet0/0/2] vlan 1 
+[S1-vlan1] port Ethernet 0/0/1
+[S1-vlan1] q
+
+[S1] q
+<S1> save
+
+The current configuration will be written to the device.
+Are you sure to continue?[Y/N]y
+Info: Please input the file name ( *.cfg, *.zip ) [vrpcfg.zip]: S1
+
+The current configuration will be written to the device.
+Are you sure to continue?[Y/N]y
+Info: Please input the file name ( *.cfg, *.zip ) [vrpcfg.zip]: S1.cfg
+Now saving the current configuration to the slot 0.......
+Save the configuration successfully.
+
+
+<S1>display saved-configuration
+#
+sysname S1
+#
+cluster enable
+ntdp enable
+ndp enable
+#
+drop illegal-mac alarm
+#
+diffserv domain default
+#
+drop-profile default
+#
+aaa 
+ authentication-scheme default
+ authorization-scheme default
+ accounting-scheme default
+ domain default 
+ domain default_admin 
+ local-user admin password simple admin
+ local-user admin service-type http
+#
+interface Vlanif1
+#
+interface MEth0/0/1
+#
+interface Ethernet0/0/1
+ port link-type access
+#
+interface Ethernet0/0/2
+ port link-type access
+#
+interface Ethernet0/0/3
+#
+interface Ethernet0/0/4
+#
+interface Ethernet0/0/5
+#
+interface Ethernet0/0/6
+#
+interface Ethernet0/0/7
+#
+interface Ethernet0/0/8
+#
+interface Ethernet0/0/9
+#
+interface Ethernet0/0/10
+#
+interface Ethernet0/0/11
+#
+interface Ethernet0/0/12
+#
+interface Ethernet0/0/13
+#
+interface Ethernet0/0/14
+#
+interface Ethernet0/0/15
+#
+interface Ethernet0/0/16
+#
+interface Ethernet0/0/17
+#
+interface Ethernet0/0/18
+#
+interface Ethernet0/0/19
+#
+interface Ethernet0/0/20
+#
+interface Ethernet0/0/21
+#
+interface Ethernet0/0/22
+#
+interface GigabitEthernet0/0/1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/2
+#
+interface NULL0
+#
+user-interface con 0
+user-interface vty 0 4
+#

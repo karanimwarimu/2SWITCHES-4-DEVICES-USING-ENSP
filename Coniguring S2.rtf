@@ -1,0 +1,44 @@
+<Huawei> u t m 
+Info: Current terminal monitor is off.
+
+<Huawei> sys	
+<Huawei>system-view 
+Enter system view, return user view with Ctrl+Z.
+
+
+[Huawei] sys	
+[Huawei]sysname S2
+
+[S2] interface g	
+[S2] interface GigabitEthernet 0/0/1
+[S2-GigabitEthernet0/0/1]port link-type trunk
+[S2-GigabitEthernet0/0/1] port trunk allow-pass vlan all
+[S2-GigabitEthernet0/0/1] q
+
+[S2]interface e	
+[S2]interface Eth	
+[S2]interface Ethernet0/0/1
+[S2-Ethernet0/0/1] port link-type access
+
+[S2-Ethernet0/0/1] vlan 2
+[S2-vlan2] port Ethernet 0/0/1
+[S2-vlan2] q
+
+[S2] interface Ethernet 0/0/2
+[S2-Ethernet0/0/2] port link-type acces 
+
+[S2-Ethernet0/0/2]vlan 2 
+[S2-vlan2]port Ethernet 0/0/2
+[S2-vlan2] q
+
+[S2]q
+
+<S2> save
+The current configuration will be written to the device.
+Are you sure to continue?[Y/N]y
+Info: Please input the file name ( *.cfg, *.zip ) [vrpcfg.zip]: S2.cfg
+Error: Invalid file name or Invalid extension ( *.cfg, *.zip ).
+<S2> save S2.cfg
+Are you sure to save the configuration to flash:/S2.cfg?[Y/N]:y
+Now saving the current configuration to the slot 0..
+Save the configuration successfully.
